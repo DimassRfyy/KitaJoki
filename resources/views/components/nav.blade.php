@@ -1,6 +1,6 @@
 <nav class="container max-w-[1130px] mx-auto flex items-center flex-wrap justify-between p-4 rounded-[20px] bg-white mt-[30px] gap-y-3 sm:gap-y-0">
     <a href="{{ route('front.index') }}">
-        <img src="{{ asset('assets/logos/logo.svg') }}" alt="logo">
+        <img src="{{ asset('assets/logos/logo-kitajoki.png') }}" alt="logo">
     </a>
     <ul class="flex items-center flex-wrap gap-x-[30px]">
         <li>
@@ -20,11 +20,12 @@
             <a href="{{ route('dashboard.wallet') }}" class="hover:font-semibold hover:text-[#6635F1] transition-all duration-300">Wallets</a>
         </li>
         @endcan
-
+    
         <li>
             <a href="" class="hover:font-semibold hover:text-[#6635F1] transition-all duration-300">Help</a>
         </li>
     </ul>
+    
 
     @auth
         <a href="{{ route('dashboard') }}">

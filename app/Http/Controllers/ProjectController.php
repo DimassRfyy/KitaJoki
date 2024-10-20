@@ -160,6 +160,15 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        DB::beginTransaction();
+
+        try{
+            $project->delete();
+            DB::commit();
+            return redirect()->route('admin.projects.index');
+        } catch(\Exception $e) {
+            DB::rollBack();
+            return redirect()->route('admin.projects.index');
+        }
     }
 }

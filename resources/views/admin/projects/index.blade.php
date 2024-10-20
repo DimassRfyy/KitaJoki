@@ -39,6 +39,13 @@
                             <a href="{{ route('admin.projects.show', $project) }}" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                                 Manage
                             </a>
+                            <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="font-bold py-4 px-6 bg-red-700 text-white rounded-full">
+                                    Delete
+                                </button>
+                            </form>
                         </div>
                     </div>
                 @empty

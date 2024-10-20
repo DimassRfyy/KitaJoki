@@ -86,7 +86,7 @@
                                 <img src="{{ asset('assets/icons/perosnalcard.svg') }}" alt="icon">
                             </div>
                             <div class="flex flex-col justify-center gap-[2px]">
-                                <p class="font-semibold group-hover:underline">Gawe Academy</p>
+                                <p class="font-semibold group-hover:underline">Kita Joki</p>
                                 <p class="text-sm text-[#545768]">Improve your skills today</p>
                             </div>
                         </div>

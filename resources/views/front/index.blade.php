@@ -6,10 +6,10 @@
     <x-nav/>
 
     <section id="header" class="container max-w-[1130px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 mt-[50px]">
-        <h1 class="font-extrabold text-[40px] leading-[45px] text-center sm:text-left">Browse Your <br>Favorites Projects</h1>
+        <h1 class="font-extrabold text-[40px] leading-[45px] text-center sm:text-left">Browse Your <br>Favorites Task</h1>
         <div class="flex flex-col sm:flex-row justify-end items-center gap-3 w-full sm:w-auto">
             <div class="p-2 pl-5 rounded-full bg-white flex items-center justify-between gap-2 w-full sm:w-[500px] focus-within:ring-2 focus-within:ring-[#6635F1] transition-all duration-300">
-                <input type="text" class="appearance-none outline-none focus:outline-none font-semibold placeholder:font-normal placeholder:text-[#545768] w-full" placeholder="Do quick search job by name...">
+                <input type="text" class="appearance-none outline-none focus:outline-none font-semibold placeholder:font-normal placeholder:text-[#545768] w-full" placeholder="Do quick search task by name...">
                 <button class="w-9 h-9 flex shrink-0">
                     <img src="{{ asset('assets/icons/search.svg') }}" alt="icon">
                 </button>
@@ -20,7 +20,7 @@
     </section>
     <section id="categories" class="container max-w-[1130px] mx-auto flex flex-col gap-4 mt-[50px]">
         <h2 class="font-bold text-xl">Browse Categories</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-5 gap-5">
+        <div class="grid grid-cols-1 sm:grid-cols-5 gap-4">
             @forelse ($categories as $category)
                 <a href="{{ route('front.category', $category->slug) }}" class="card">
                     <div class="p-5 rounded-[20px] bg-white flex flex-col gap-[30px] hover:ring-2 hover:ring-[#6635F1] transition-all duration-300">
@@ -39,7 +39,7 @@
         </div>
     </section>
     <section id="featured" class="container max-w-[1130px] mx-auto flex flex-col gap-4 mt-[50px]">
-        <h2 class="font-bold text-xl">Featured Projects</h2>
+        <h2 class="font-bold text-xl">Featured Task</h2>
         <div class="grid grid-cols-1 sm:grid-cols-4 gap-5">
             @forelse ($projects as $project)
                 <a href="{{ route('front.details', $project->slug) }}" class="card">
@@ -88,7 +88,7 @@
     </section>
     <section id="newest" class="container max-w-[1130px] mx-auto flex flex-col sm:flex-row sm:flex-nowrap gap-5 mt-[50px]">
         <div class="flex flex-col gap-4 w-full">
-            <h2 class="font-bold text-xl">Newest Projects</h2>
+            <h2 class="font-bold text-xl">Newest Task</h2>
             <div class="flex flex-col gap-5">
 
                 @forelse ($projects as $project)
@@ -149,7 +149,12 @@
                     </div>
                     <div class="flex flex-col gap-[2px]">
                         <p class="font-semibold">Hi, {{ Auth::user()->name }}</p>
-                        <p class="text-sm leading-[21px] text-[#545768]">911 Finished Projects</p>
+                        @if (Auth::user()->hasRole('project_client'))
+                        <p class="text-sm text-gray-500">{{ $project->count() }} Total Tugas</p>
+                            @else
+                            <p class="text-sm leading-[21px] text-[#545768]">911 Finished Projects</p>
+                        @endif
+                        
                     </div>
                 </div>
                 <div class="flex items-center gap-[6px]">
@@ -195,7 +200,7 @@
                                 <img src="{{ asset('assets/icons/perosnalcard.svg') }}" alt="icon">
                             </div>
                             <div class="flex flex-col justify-center gap-[2px]">
-                                <p class="font-semibold group-hover:underline">Gawe Academy</p>
+                                <p class="font-semibold group-hover:underline">Kita Joki</p>
                                 <p class="text-sm text-[#545768]">Improve your skills today</p>
                             </div>
                         </div>
